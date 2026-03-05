@@ -13,25 +13,31 @@ def hero(
     whatsapp_url: str | None = None,
 ) -> None:
     subtitle_html = f'<p class="small-muted" style="margin:0 0 14px 0;">{subtitle}</p>' if subtitle else ""
+    chips_html = "".join([f'<span class="ag-chip">{b}</span>' for b in bullets[:4]])
+    cta_html = ""
+    if form_url and whatsapp_url:
+        cta_html = f"""
+<div class="ag-cta-row">
+  <a class="ag-cta-btn" href="{form_url}" target="_blank" rel="noopener noreferrer">Solicitar orçamento</a>
+  <a class="ag-cta-btn" href="{whatsapp_url}" target="_blank" rel="noopener noreferrer">Contato no WhatsApp</a>
+</div>
+"""
     left, right = st.columns([1.25, 1], gap="large")
     with left:
         st.markdown(
             f"""
 <div class="ag-hero">
+  <div class="ag-hero-content">
   <div class="ag-small-title">Solução Agrosola</div>
   <h2 style="margin:0 0 8px 0;">{title}</h2>
   {subtitle_html}
-  {"".join([f'<span class="ag-chip">{b}</span>' for b in bullets[:4]])}
+  {chips_html}
+  </div>
+  {cta_html}
 </div>
             """,
             unsafe_allow_html=True,
         )
-        if form_url and whatsapp_url:
-            c1, c2 = st.columns(2)
-            with c1:
-                st.link_button("Solicitar orçamento", form_url, use_container_width=True)
-            with c2:
-                st.link_button("Contato no WhatsApp", whatsapp_url, use_container_width=True)
     with right:
         if image_path:
             st.image(image_path, use_container_width=True, caption="Bomba-Solar")
