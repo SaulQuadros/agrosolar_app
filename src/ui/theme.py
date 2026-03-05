@@ -97,6 +97,7 @@ p, li, .small-muted {
   background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(237,244,250,0.96));
   box-shadow: 0 12px 30px rgba(8,42,73,0.08);
   animation: agFadeUp 450ms ease;
+  min-height: 360px;
 }
 
 .ag-hero-content { margin-bottom: 14px; }
@@ -174,6 +175,7 @@ p, li, .small-muted {
 @media (max-width: 900px) {
   .block-container { padding-top: 1rem; }
   .ag-hero { padding: 16px; }
+  .ag-hero { min-height: auto; }
   .ag-hero-content { margin-bottom: 10px; }
   .ag-cta-row { grid-template-columns: 1fr; }
 }
