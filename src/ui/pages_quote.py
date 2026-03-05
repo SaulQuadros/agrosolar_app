@@ -23,7 +23,7 @@ def render() -> None:
     st.title("Solicitar orçamento")
     st.caption("Faça um pré-orçamento fictício com dados técnicos e, depois, formalize no formulário.")
 
-    c_top_1, c_top_2 = st.columns([1.35, 1], gap="large")
+    c_top_1, c_top_2 = st.columns([1.35, 1], gap="large", vertical_alignment="bottom")
     with c_top_1:
         st.markdown(
             """

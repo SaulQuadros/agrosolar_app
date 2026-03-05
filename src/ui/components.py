@@ -22,7 +22,7 @@ def hero(
   <a class="ag-cta-btn" href="{whatsapp_url}" target="_blank" rel="noopener noreferrer">Contato no WhatsApp</a>
 </div>
 """
-    left, right = st.columns([1.25, 1], gap="large")
+    left, right = st.columns([1.25, 1], gap="large", vertical_alignment="bottom")
     with left:
         st.markdown(
             f"""
