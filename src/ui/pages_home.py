@@ -14,19 +14,14 @@ def render() -> None:
     st.caption(cfg.tagline)
 
     hero(
-        title="Bombeamento solar com identidade técnica e foco no campo",
-        subtitle="Dimensionamento, implantação e manutenção do sistema completo para irrigação e abastecimento.",
-        bullets=[
-            "Diagnóstico de demanda",
-            "Projeto fotovoltaico",
-            "Instalação assistida",
-            "Suporte contínuo",
-        ],
-        image_path="data/assets/bomba_fv_case.jpg",
+        title="Bombeamento sustentável para sua lavroura e agronegócio",
+        subtitle="Mude para a sustentabilidade da energia solar e economize na sua produção rural!",
+        bullets=[],
+        image_path="assets/images/bomba_fotovoltaico.png",
     )
 
     st.write("")
-    cta_row(cfg.canva_website_url, cfg.google_form_url, cfg.whatsapp_url)
+    cta_row(cfg.google_form_url, cfg.whatsapp_url)
 
     st.divider()
     st.markdown(

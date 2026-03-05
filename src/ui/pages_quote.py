@@ -46,4 +46,4 @@ def render() -> None:
 - Distância aproximada da tubulação  
 - Horas/dia de operação"""
     )
-    st.image("data/assets/bomba_fv_case.jpg", use_container_width=True, caption="Referência visual do sistema em campo")
+    st.image("assets/images/bomba_fotovoltaico.png", use_container_width=True, caption="Bomba-Solar")
