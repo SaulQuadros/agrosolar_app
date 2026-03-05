@@ -9,6 +9,7 @@ def render() -> None:
     inject_css()
 
     st.title("Sobre o APP (didático)")
+    st.image("data/assets/bomba_fv_case.jpg", use_container_width=True, caption="Sistema de bombeamento solar em contexto de campo")
     st.write(
         "Este APP é um **complemento** para a vitrine principal (Canva Website) e para a captação de orçamento (Google Forms). "
         "Ele ajuda a reforçar a proposta de valor, apresentar pacotes e oferecer um simulador simples."

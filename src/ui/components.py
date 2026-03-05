@@ -4,16 +4,35 @@ import streamlit as st
 from typing import List
 from src.tools.formatting import brl
 
-def hero(title: str, subtitle: str, bullets: List[str]) -> None:
-    st.markdown(f"""<div class="ag-hero">
-<h2 style="margin:0 0 8px 0;">{title}</h2>
-<p class="small-muted" style="margin:0 0 12px 0;">{subtitle}</p>
-</div>""", unsafe_allow_html=True)
-
-    cols = st.columns(3)
-    for i, b in enumerate(bullets[:3]):
-        with cols[i]:
-            st.markdown(f"""<div class="ag-card"><b>{b}</b></div>""", unsafe_allow_html=True)
+def hero(title: str, subtitle: str, bullets: List[str], image_path: str | None = None) -> None:
+    left, right = st.columns([1.25, 1], gap="large")
+    with left:
+        st.markdown(
+            f"""
+<div class="ag-hero">
+  <div class="ag-small-title">Solução AgroSolar</div>
+  <h2 style="margin:0 0 8px 0;">{title}</h2>
+  <p class="small-muted" style="margin:0 0 14px 0;">{subtitle}</p>
+  {"".join([f'<span class="ag-chip">{b}</span>' for b in bullets[:4]])}
+</div>
+            """,
+            unsafe_allow_html=True,
+        )
+    with right:
+        if image_path:
+            st.image(image_path, use_container_width=True, caption="Bomba + sistema fotovoltaico em campo")
+        else:
+            st.markdown(
+                """
+<div class="ag-blueprint">
+  <h4 style="margin:0 0 8px 0; color:#f8fbff;">Diagnóstico técnico + execução em campo</h4>
+  <p style="margin:0; color:#d8e6f4;">
+    Projeto, kit, instalação e manutenção em uma solução de engenharia.
+  </p>
+</div>
+                """,
+                unsafe_allow_html=True,
+            )
 
 def cta_row(canva_url: str, form_url: str, whatsapp_url: str) -> None:
     c1, c2, c3 = st.columns(3)
@@ -31,7 +50,7 @@ def pricing_cards(packages) -> None:
         with cols[i]:
             low, high = p.price_range_brl
             st.markdown('<div class="ag-card">', unsafe_allow_html=True)
-            st.markdown(f"### {p.name}")
+            st.markdown(f'<div class="ag-small-title">Plano</div><h3 style="margin:4px 0 8px 0;">{p.name}</h3>', unsafe_allow_html=True)
             st.caption(p.ideal_for)
             st.markdown(f"**A partir de:** {brl(low)}\n**Até:** {brl(high)}")
             st.markdown("**Inclui:**")

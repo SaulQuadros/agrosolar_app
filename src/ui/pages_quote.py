@@ -11,6 +11,17 @@ def render() -> None:
 
     st.title("Solicitar orçamento")
     st.caption("Preencha o formulário e retornaremos com 3 opções (Essencial, Profissional e Fazenda).")
+    st.markdown(
+        """
+<div class="ag-panel">
+  <div class="ag-small-title">Briefing técnico</div>
+  <p style="margin: 6px 0 0 0;">
+    Quanto melhor o briefing, mais preciso o pré-dimensionamento de bomba, geração FV e estimativa de investimento.
+  </p>
+</div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     if not cfg.google_form_url or "SEU-ID" in cfg.google_form_url:
         st.warning("Configure o link do Google Forms em `st.secrets` (recomendado) ou em `config/app_config.py`.")
@@ -35,3 +46,4 @@ def render() -> None:
 - Distância aproximada da tubulação  
 - Horas/dia de operação"""
     )
+    st.image("data/assets/bomba_fv_case.jpg", use_container_width=True, caption="Referência visual do sistema em campo")

@@ -13,6 +13,17 @@ def render() -> None:
 
     st.title("Simulador (didático)")
     st.caption("Estimativas simplificadas para fins educacionais. Não substitui projeto e dimensionamento técnico.")
+    st.markdown(
+        """
+<div class="ag-panel">
+  <div class="ag-small-title">Objetivo</div>
+  <p style="margin: 6px 0 0 0;">
+    Simular ordem de grandeza de consumo, custo mensal na rede e payback para apoiar conversa comercial inicial.
+  </p>
+</div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     st.subheader("Entradas principais")
     c1, c2, c3 = st.columns(3)
@@ -53,5 +64,15 @@ def render() -> None:
         st.success(f"Payback estimado: **{roi.payback_months:.1f} meses** (~{roi.payback_months/12:.1f} anos).")
 
     st.divider()
-    st.info("Quer uma proposta com 3 opções? Use o botão abaixo.")
+    st.markdown(
+        """
+<div class="ag-blueprint">
+  <h4 style="margin:0 0 8px 0; color:#f8fbff;">Próximo passo comercial</h4>
+  <p style="margin:0; color:#d8e6f4;">
+    Com os dados acima, você já pode solicitar uma proposta com opções Essencial, Profissional e Fazenda.
+  </p>
+</div>
+        """,
+        unsafe_allow_html=True,
+    )
     st.link_button("Solicitar orçamento (Forms)", cfg.google_form_url, use_container_width=True)

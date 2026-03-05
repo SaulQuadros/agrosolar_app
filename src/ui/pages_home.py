@@ -14,23 +14,33 @@ def render() -> None:
     st.caption(cfg.tagline)
 
     hero(
-        title="Bombeamento solar para agricultura sustentável",
-        subtitle="Venda • Instalação • Manutenção • Peças — solução completa para irrigação e abastecimento.",
+        title="Bombeamento solar com identidade técnica e foco no campo",
+        subtitle="Dimensionamento, implantação e manutenção do sistema completo para irrigação e abastecimento.",
         bullets=[
-            "Reduza custos de energia",
-            "Autonomia no campo",
-            "Suporte técnico e manutenção",
+            "Diagnóstico de demanda",
+            "Projeto fotovoltaico",
+            "Instalação assistida",
+            "Suporte contínuo",
         ],
+        image_path="data/assets/bomba_fv_case.jpg",
     )
 
     st.write("")
     cta_row(cfg.canva_website_url, cfg.google_form_url, cfg.whatsapp_url)
 
     st.divider()
-    st.header("A solução (o produto é o serviço de engenharia)")
-    st.write(
-        "Nós cuidamos do sistema completo: dimensionamento (vazão/altura/perdas), fornecimento do kit (bomba + FV), "
-        "instalação e comissionamento, manutenção preventiva/corretiva e reposição de peças."
+    st.markdown(
+        """
+<div class="ag-panel">
+  <div class="ag-small-title">Proposta de valor</div>
+  <h3 style="margin-top:4px;">A solução é engenharia aplicada, não só equipamento</h3>
+  <p style="margin:0;">
+    Cuidamos do ciclo completo: levantamento técnico (vazão/altura/perdas), fornecimento do kit
+    (bomba + FV), instalação e comissionamento, manutenção preventiva/corretiva e reposição de peças.
+  </p>
+</div>
+        """,
+        unsafe_allow_html=True,
     )
 
     st.divider()

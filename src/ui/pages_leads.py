@@ -28,6 +28,17 @@ def render() -> None:
     inject_css()
     st.title("Leads (opcional)")
     st.caption("Faça upload de um CSV exportado do Google Sheets/Forms para acompanhar o funil.")
+    st.markdown(
+        """
+<div class="ag-panel">
+  <div class="ag-small-title">Gestão comercial</div>
+  <p style="margin: 6px 0 0 0;">
+    Estruture o funil para saber onde estão os gargalos: captação, contato, proposta, fechamento e perdas.
+  </p>
+</div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     up = st.file_uploader("CSV de leads", type=["csv"])
     if not up:
