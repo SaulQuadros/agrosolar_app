@@ -42,7 +42,7 @@ def render() -> None:
     with c4:
         investment = st.number_input("Investimento estimado (R$)", min_value=500.0, value=9000.0, step=500.0)
     with c5:
-        maint = st.number_input("Manutenção mensal (R$)", min_value=0.0, value=80.0, step=10.0)
+        maint = st.number_input("Manutenção mensal (R$)", min_value=0.0, value=30.0, step=10.0)
 
     st.divider()
 
@@ -58,8 +58,19 @@ def render() -> None:
     with r3:
         st.metric("PV recomendado (kWp)", f"{pv_kwp:.2f} kWp")
 
+    monthly_saving = roi.monthly_cost_grid_brl - maint
     if roi.payback_months is None:
-        st.warning("Payback não calculado (economia mensal não positiva com os valores informados).")
+        st.warning(
+            "Payback não calculado. Para calcular, a economia mensal precisa ser maior que zero: "
+            "`custo mensal na rede - manutenção mensal > 0`."
+        )
+        st.info(
+            f"Com os valores atuais: custo na rede = {brl(roi.monthly_cost_grid_brl)} e manutenção = {brl(maint)}. "
+            f"Economia estimada = {brl(monthly_saving)}."
+        )
+        st.caption(
+            "Para obter payback, aumente consumo/tarifa da rede ou reduza manutenção/investimento."
+        )
     else:
         st.success(f"Payback estimado: **{roi.payback_months:.1f} meses** (~{roi.payback_months/12:.1f} anos).")
 
@@ -75,4 +86,4 @@ def render() -> None:
         """,
         unsafe_allow_html=True,
     )
-    st.link_button("Solicitar orçamento (Forms)", cfg.google_form_url, use_container_width=True)
+    st.link_button("Solicitar orçamento", cfg.google_form_url, use_container_width=True)

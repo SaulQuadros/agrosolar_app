@@ -4,7 +4,14 @@ import streamlit as st
 from typing import List
 from src.tools.formatting import brl
 
-def hero(title: str, subtitle: str, bullets: List[str], image_path: str | None = None) -> None:
+def hero(
+    title: str,
+    subtitle: str,
+    bullets: List[str],
+    image_path: str | None = None,
+    form_url: str | None = None,
+    whatsapp_url: str | None = None,
+) -> None:
     subtitle_html = f'<p class="small-muted" style="margin:0 0 14px 0;">{subtitle}</p>' if subtitle else ""
     left, right = st.columns([1.25, 1], gap="large")
     with left:
@@ -19,6 +26,12 @@ def hero(title: str, subtitle: str, bullets: List[str], image_path: str | None =
             """,
             unsafe_allow_html=True,
         )
+        if form_url and whatsapp_url:
+            c1, c2 = st.columns(2)
+            with c1:
+                st.link_button("Solicitar orçamento", form_url, use_container_width=True)
+            with c2:
+                st.link_button("Contato no WhatsApp", whatsapp_url, use_container_width=True)
     with right:
         if image_path:
             st.image(image_path, use_container_width=True, caption="Bomba-Solar")

@@ -11,7 +11,7 @@ class Package:
     price_range_brl: Tuple[float, float]
 
 def get_default_packages() -> List[Package]:
-    """Pacotes didáticos (faixas de preço). Ajuste conforme desejar."""
+    """Pacotes de referência comercial (faixas de preço aproximadas)."""
     return [
         Package(
             name="Essencial",
@@ -22,7 +22,7 @@ def get_default_packages() -> List[Package]:
                 "Treinamento do operador",
                 "1 revisão em 90 dias",
             ],
-            price_range_brl=(3500.0, 7500.0),
+            price_range_brl=(12000.0, 25000.0),
         ),
         Package(
             name="Profissional",
@@ -33,7 +33,7 @@ def get_default_packages() -> List[Package]:
                 "Instalação + checklist de entrega",
                 "Plano de manutenção trimestral (opcional)",
             ],
-            price_range_brl=(7500.0, 15000.0),
+            price_range_brl=(25000.0, 55000.0),
         ),
         Package(
             name="Fazenda",
@@ -45,6 +45,6 @@ def get_default_packages() -> List[Package]:
                 "Contrato anual de manutenção (opcional)",
                 "Prioridade de atendimento e peças",
             ],
-            price_range_brl=(15000.0, 35000.0),
+            price_range_brl=(55000.0, 120000.0),
         ),
     ]

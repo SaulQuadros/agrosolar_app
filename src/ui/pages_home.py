@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import streamlit as st
 from src.ui.theme import inject_css
-from src.ui.components import hero, cta_row, pricing_cards, faq
+from src.ui.components import hero, pricing_cards, faq
 from src.core.catalog import get_default_packages
 from src.tools.config_loader import load_config
 
@@ -18,10 +18,9 @@ def render() -> None:
         subtitle="Mude para a sustentabilidade da energia solar e economize na sua produção rural!",
         bullets=[],
         image_path="assets/images/bomba_fotovoltaico.png",
+        form_url=cfg.google_form_url,
+        whatsapp_url=cfg.whatsapp_url,
     )
-
-    st.write("")
-    cta_row(cfg.google_form_url, cfg.whatsapp_url)
 
     st.divider()
     st.markdown(
